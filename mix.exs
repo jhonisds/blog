@@ -1,6 +1,8 @@
 defmodule Blog.MixProject do
   use Mix.Project
 
+  @github_url "https://github.com/jhonisds/blog.git"
+
   def project do
     [
       app: :blog,
