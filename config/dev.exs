@@ -2,10 +2,11 @@ use Mix.Config
 
 # Configure your database
 config :blog, Blog.Repo,
-  username: "postgres",
-  password: "postgres",
-  database: "blog_dev",
-  hostname: "localhost",
+  # username: "postgres",
+  # password: "postgres",
+  # database: "blog_dev",
+  # hostname: "localhost",
+  url: System.get_env("DATABASE_URL") |> String.replace("?", "dev"),
   show_sensitive_data_on_connection_error: true,
   pool_size: 10
 
