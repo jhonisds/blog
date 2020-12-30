@@ -1,3 +1,26 @@
+# version: "3"
+# services:
+#   app:
+#     build:
+#       context: .
+#       dockerfile: Dockerfile
+#     command: /bin/sh docker_dev_start.sh
+#     ports:
+#       - "8080:4000"
+#     depends_on:
+#       - db
+#     links:
+#       - db
+#   db:
+#     image: postgres
+#     environment:
+#       POSTGRES_PASSWORD: postgres
+#       POSTGRES_USER: postgres
+#     ports:
+#       - "5432:5432"
+#     restart: always
+# =========================================
+
 version: "3.6"
 services:
   db:
@@ -6,11 +29,13 @@ services:
       POSTGRES_PASSWORD: postgres
       POSTGRES_USER: postgres
       POSTGRES_HOST_AUTH_METHOD: trust
+    ports:
+      - "5432:5432"
     image: "postgres:11-alpine"
     restart: always
     volumes:
       - "pgdata:/var/lib/postgresql/data"
-  web:
+  app:
     build: .
     depends_on:
       - db
@@ -22,5 +47,14 @@ services:
       - "4000:4000"
     volumes:
       - .:/app
+  # test:
+  #   image: phoenixdocker_web
+  #   command: mix test
+  #   environment:
+  #     - MIX_ENV=test
+  #   volumes_from:
+  #     - app
+  #   links:
+  #     - db
 volumes:
   pgdata:

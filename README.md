@@ -25,3 +25,15 @@ Ready to run in production? Please [check our deployment guides](https://hexdocs
 - docker-compose run web mix ecto.create
 - docker-compose up
 - docker exec -it blog_db_1 psql -U postgres
+
+## Credo
+
+- mix credo
+
+## Sobelow
+
+- mix sobelow --config
+
+## Coveralls
+
+- mix coveralls.hmtl
