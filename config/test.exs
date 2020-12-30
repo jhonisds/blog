@@ -11,7 +11,7 @@ config :blog, Blog.Repo,
   # database: "blog_test#{System.get_env("MIX_TEST_PARTITION")}",
   # hostname: "localhost",
 
-  url: System.get_env("DATABASE_URL") |> String.replace("?", "test"),
+  url: "postgres://postgres:postgres@db:5432/blog_test#{System.get_env("MIX_TEST_PARTITION")}",
   pool: Ecto.Adapters.SQL.Sandbox
 
 # We don't run a server during test. If one is required,

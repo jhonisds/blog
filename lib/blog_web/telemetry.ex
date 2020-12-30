@@ -1,4 +1,7 @@
 defmodule BlogWeb.Telemetry do
+  @moduledoc """
+  Documentation for Telemetry.
+  """
   use Supervisor
   import Telemetry.Metrics
 
