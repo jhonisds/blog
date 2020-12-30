@@ -8,6 +8,24 @@ defmodule Blog.MixProject do
       app: :blog,
       version: "0.1.0",
       elixir: "~> 1.10",
+      description: "Project Elixir Blog",
+      source_url: @github_url,
+      homepage_url: @github_url,
+      files: ~w(mix.exs lib LICENSE.md README.md CHANGELOG.md),
+      # Docs
+      name: "Blog",
+      source_url: @github_url,
+      docs: [
+        # The main page for docs
+        main: "readme",
+        # logo: "path/to/logo.png",
+        extras: ["README.md", "CHANGELOG.md"]
+      ],
+      package: [
+        maintainers: ["Jhoni Santos"],
+        licences: ["MIT"],
+        links: %{"GitHub" => @github_url}
+      ],
       elixirc_paths: elixirc_paths(Mix.env()),
       compilers: [:phoenix, :gettext] ++ Mix.compilers(),
       start_permanent: Mix.env() == :prod,
