@@ -11,7 +11,7 @@ services:
   - postgresql
 
 before_script:
-  - psql -c 'create database blog_test;' -U jhoni
+  - psql -c 'create database blog_test;' -U postgres
 
 script:
   - mix format --check-formatted --dry-run
