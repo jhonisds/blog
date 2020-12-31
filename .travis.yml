@@ -7,6 +7,8 @@ otp_release:
 addons:
   postgres: "9.4"
 
+sudo: false
+dist: trusty
 # env:
 #   global:
 #     - POSTGRES_USER=jhoni
