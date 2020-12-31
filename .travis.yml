@@ -8,7 +8,7 @@ addons:
   postgres: "12.2"
 
 services:
-  - postgres
+  - postgresql
 
 script:
   - mix format --check-formatted --dry-run
