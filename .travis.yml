@@ -10,6 +10,9 @@ addons:
 services:
   - postgresql
 
+before_script:
+  - psql -c 'create database blog_test;' -U jhoni
+
 script:
   - mix format --check-formatted --dry-run
   - mix credo --strict
