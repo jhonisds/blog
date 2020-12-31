@@ -7,6 +7,9 @@ otp_release:
 addons:
   postgres: "9.4"
 
+postgres:
+  username: jhoni
+
 services:
   - postgresql
 
