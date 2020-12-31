@@ -5,22 +5,18 @@ otp_release:
   - 22.3.3
 
 addons:
-  postgres: "9.4"
+  postgres: "12"
 
-sudo: false
-dist: trusty
-# env:
-#   global:
-#     - POSTGRES_USER=jhoni
+env:
+  global:
+    - PGUSER=jhoni
+    - PGPORT=5432
 
 services:
   - postgresql
 
 # before_script:
-#   - psql -c 'create database blog_test;' -U postgres
-
-before_script:
-  - psql -c "CREATE USER jhoni WITH PASSWORD 'jhoni';" -U postgres
+#   - psql -c "CREATE USER jhoni WITH PASSWORD 'jhoni';" -U postgres
 
 script:
   - mix format --check-formatted --dry-run
