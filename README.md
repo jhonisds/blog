@@ -37,3 +37,4 @@ Ready to run in production? Please [check our deployment guides](https://hexdocs
 ## Coveralls
 
 - mix coveralls.hmtl
+- mix coveralls.json
