@@ -7,15 +7,18 @@ otp_release:
 addons:
   postgres: "9.4"
 
-env:
-  global:
-    - POSTGRES_USER=jhoni
+# env:
+#   global:
+#     - POSTGRES_USER=jhoni
 
 services:
   - postgresql
 
 # before_script:
 #   - psql -c 'create database blog_test;' -U postgres
+
+before_script:
+  - psql -c "CREATE USER jhoni WITH PASSWORD 'jhoni';" -U postgre
 
 script:
   - mix format --check-formatted --dry-run
