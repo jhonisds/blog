@@ -1,5 +1,9 @@
 # Blog
 
+[![Build Status](https://www.travis-ci.org/jhonisds/blog.svg?branch=main)](https://www.travis-ci.org/jhonisds/blog)
+
+[![codecov](https://codecov.io/gh/jhonisds/blog/branch/main/graph/badge.svg?token=BZBYOE40LV)](https://codecov.io/gh/jhonisds/blog)
+
 To start your Phoenix server:
 
 - Install dependencies with `mix deps.get`
