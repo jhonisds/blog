@@ -7,16 +7,8 @@ otp_release:
 addons:
   postgres: "9.4"
 
-env:
-  global:
-    - PGUSER=jhoni
-    - PGPORT=5432
-
 services:
   - postgresql
-
-# before_script:
-#   - psql -c "CREATE USER jhoni WITH PASSWORD 'jhoni';" -U postgres
 
 script:
   - mix format --check-formatted --dry-run
