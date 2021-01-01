@@ -17,11 +17,12 @@ script:
   - mix sobelow --config
   - mix coveralls.json
 
-after_sucess:
-  - bash <(curl -s https://codecov.io/bash)
 deploy:
   skip_cleanup: true
   provider: script
   script: bash ./deploy.sh
   on:
     branch: main
+
+after_sucess:
+  - bash <(curl -s https://codecov.io/bash)
