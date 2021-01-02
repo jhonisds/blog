@@ -7,6 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Blog · Phoenix Framework</title>
   <link rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/app.css") %>" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <script defer type="text/javascript" src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>
 </head>
 
@@ -14,7 +15,7 @@
   <nav>
     <div class="nav-wrapper">
       <div class="brand-logo">
-        <%= link "Blog", to: Routes.page_path(@conn, :index) %>
+        <%= link "Phoenix", to: Routes.page_path(@conn, :index) %>
       </div>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         <li><a href="#">Welcome</a></li>
@@ -23,6 +24,11 @@
         </li>
         <li><a href="#">Comments</a></li>
       </ul>
+      <div class="fixed-action-btn">
+        <a class="btn-floating btn-large blue-grey">
+          <i class="large material-icons">add</i>
+        </a>
+      </div>
     </div>
   </nav>
   <main role="main" class="container">
