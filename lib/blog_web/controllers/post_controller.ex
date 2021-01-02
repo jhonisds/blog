@@ -3,11 +3,15 @@ defmodule BlogWeb.PostController do
 
   def index(conn, _params) do
     posts = [
-      %{title: "Phoenix"},
-      %{title: "LiveView"},
-      %{title: "Postgres"}
+      %{id: 1, title: "Phoenix"},
+      %{id: 2, title: "LiveView"},
+      %{id: 3, title: "Postgres"}
     ]
 
     render(conn, "index.html", posts: posts)
+  end
+
+  def show(conn, _params) do
+    render(conn, "show.html")
   end
 end
