@@ -13,7 +13,7 @@
 
 <body>
   <nav>
-    <div class="nav-wrapper">
+    <div class="nav-wrapper indigo lighten-2">
       <div class="brand-logo">
         <%= link "Phoenix", to: Routes.page_path(@conn, :index) %>
       </div>
@@ -24,11 +24,7 @@
         </li>
         <li><a href="#">Comments</a></li>
       </ul>
-      <div class="fixed-action-btn">
-        <a class="btn-floating btn-large blue-grey">
-          <i class="large material-icons">add</i>
-        </a>
-      </div>
+
     </div>
   </nav>
   <main role="main" class="container">

@@ -1,10 +1,14 @@
-  <div class="row">
-      <div class="col s12 m5">
-          <div class="card-panel teal">
-              <span class="white-text">I am a very simple card. I am good at containing small bits of information.
-                  I am convenient because I require little markup to use effectively. I am similar to what is called a
-                  panel in other frameworks.
-              </span>
-          </div>
-      </div>
-  </div>
+<div class="card hoverable">
+    <div class="card-content">
+        <p class="grey-text right">Posted at: <%= @post.updated_at %> </p>
+        <h5 class="indigo-text lighten-2"> <%= @post.title%> </h5>
+        <p class="grey-text text-darken-4">
+            <%= @post.description %>
+        </p>
+
+        <%= link to: Routes.post_path(@conn, :index), class: "btn-floating left waves-effect" do %>
+        <i class="material-icons cyan darken-2">arrow_back</i>
+        <% end %>
+
+    </div>
+</div>
