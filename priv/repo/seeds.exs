@@ -9,3 +9,14 @@
 #
 # We recommend using the bang functions (`insert!`, `update!`
 # and so on) as they will fail if something goes wrong.
+
+alias Blog.Posts
+
+posts = [
+  %{title: "Phoenix", description: "Description Phoenix"},
+  %{title: "LiveView", description: "Description LiveView"},
+  %{title: "Postgres", description: "Description Postegres"},
+  %{title: "Elixir", description: "Description Elixir"}
+]
+
+Enum.each(posts, &Posts.create_post/1)
