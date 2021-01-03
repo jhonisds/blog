@@ -1,7 +1,7 @@
 defmodule BlogWeb.PostController do
   use BlogWeb, :controller
 
-  alias Blog.{Repo, Posts, Posts.Post}
+  alias Blog.{Posts, Posts.Post, Repo}
 
   def index(conn, _params) do
     posts = Repo.all(Post)
@@ -19,7 +19,11 @@ defmodule BlogWeb.PostController do
   end
 
   def create(conn, %{"post" => post}) do
-    case Posts.create_post(post) do
+    result =
+      post
+      |> Posts.create_post()
+
+    case result do
       {:ok, post} ->
         conn
         |> put_flash(:info, "Post #{post.title} successfully created")
