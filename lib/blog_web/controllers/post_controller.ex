@@ -4,7 +4,7 @@ defmodule BlogWeb.PostController do
   alias Blog.{Posts, Posts.Post, Repo}
 
   def index(conn, _params) do
-    posts = Repo.all(Post)
+    posts = Posts.list_posts()
     render(conn, "index.html", posts: posts)
   end
 
@@ -32,5 +32,31 @@ defmodule BlogWeb.PostController do
       {:error, changeset} ->
         render(conn, "new.html", changeset: changeset)
     end
+  end
+
+  def delete(conn, %{"id" => id}) do
+    Posts.delete_post(id)
+
+    conn
+    |> put_flash(:info, "Post #{id} successfully deleted")
+    |> redirect(to: Routes.post_path(conn, :index))
+  end
+
+  def update(conn, %{"id" => id, "post" => post_params}) do
+    case Posts.update_post(id, post_params) do
+      {:ok, post} ->
+        conn
+        |> put_flash(:info, "Post #{post.title} successfully updated")
+        |> redirect(to: Routes.post_path(conn, :show, post))
+
+      {:error, changeset} ->
+        render(conn, "new.html", changeset: changeset)
+    end
+  end
+
+  def edit(conn, %{"id" => id}) do
+    post = Posts.get_post!(id)
+    changeset = Post.changeset(post)
+    render(conn, "edit.html", post: post, changeset: changeset)
   end
 end
