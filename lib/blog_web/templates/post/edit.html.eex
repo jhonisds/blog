@@ -1,0 +1,2 @@
+<h5 class="grey-text lighten-2">Edit post</h5>
+<%= render "form.html", Map.put(assigns, :action, Routes.post_path(@conn, :update, @post)) %>
