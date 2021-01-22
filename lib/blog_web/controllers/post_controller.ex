@@ -35,7 +35,8 @@ defmodule BlogWeb.PostController do
   end
 
   def delete(conn, %{"id" => id}) do
-    Posts.delete_post(id)
+    post = Posts.get_post!(id)
+    Posts.delete_post(post)
 
     conn
     |> put_flash(:info, "Post #{id} successfully deleted")
