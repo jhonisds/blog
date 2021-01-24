@@ -41,14 +41,14 @@ defmodule Blog.Posts.PostsTest do
     test "update_post/2 with valid data updates the post" do
       post = post_fixtures()
 
-      assert {:ok, %Post{} = post} = Posts.update_post(post.id, @update_attrs)
+      assert {:ok, %Post{} = post} = Posts.update_post(post, @update_attrs)
       assert post.title == "Elixir"
       assert post.description == "Description Elixir"
     end
 
     test "update_post/2  with invalid data returns error changeset" do
       post = post_fixtures()
-      assert {:error, %Ecto.Changeset{}} = Posts.update_post(post.id, @invalid_attrs)
+      assert {:error, %Ecto.Changeset{}} = Posts.update_post(post, @invalid_attrs)
       assert post == Posts.get_post!(post.id)
     end
 
