@@ -67,4 +67,11 @@ defmodule BlogWeb.PostControllerTest do
     assert html_response(conn, 200) =~ "can&#39;t be blank"
   end
 
+  test "deletes the posts", %{conn: conn} do
+    {:ok, post} = Posts.create_post(@valid_attrs)
+    conn = delete(conn, Routes.post_path(conn, :delete, post))
+    assert redirected_to(conn) == Routes.post_path(conn, :index)
+
+    assert_error_sent 404, fn -> get(conn, Routes.post_path(conn, :show, post)) end
+  end
 end
