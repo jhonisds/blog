@@ -35,7 +35,8 @@ defmodule BlogWeb.PostController do
   end
 
   def delete(conn, %{"id" => id}) do
-    Posts.delete_post(id)
+    post = Posts.get_post!(id)
+    Posts.delete_post(post)
 
     conn
     |> put_flash(:info, "Post #{id} successfully deleted")
@@ -43,14 +44,16 @@ defmodule BlogWeb.PostController do
   end
 
   def update(conn, %{"id" => id, "post" => post_params}) do
-    case Posts.update_post(id, post_params) do
+    post = Posts.get_post!(id)
+
+    case Posts.update_post(post, post_params) do
       {:ok, post} ->
         conn
         |> put_flash(:info, "Post #{post.title} successfully updated")
         |> redirect(to: Routes.post_path(conn, :show, post))
 
       {:error, changeset} ->
-        render(conn, "new.html", changeset: changeset)
+        render(conn, "edit.html", changeset: changeset, post: post)
     end
   end
 

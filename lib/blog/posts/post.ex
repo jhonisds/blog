@@ -15,6 +15,6 @@ defmodule Blog.Posts.Post do
   def changeset(post, attrs \\ %{}) do
     post
     |> cast(attrs, [:title, :description])
-    |> validate_required([:title, :description], message: "fields required")
+    |> validate_required([:title, :description])
   end
 end
