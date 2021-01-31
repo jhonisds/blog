@@ -42,3 +42,7 @@ Ready to run in production? Please [check our deployment guides](https://hexdocs
 
 - mix coveralls.hmtl
 - mix coveralls.json
+
+## Assets
+
+- npm install --prefix ./assets
