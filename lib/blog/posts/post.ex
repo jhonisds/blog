@@ -5,10 +5,13 @@ defmodule Blog.Posts.Post do
   use Ecto.Schema
   import Ecto.Changeset
 
+  alias Blog.Comments.Comment
+
   schema "posts" do
     field :title, :string
     field :description, :string
 
+    has_many :comments, Comment
     timestamps()
   end
 

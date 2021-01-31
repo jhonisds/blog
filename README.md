@@ -46,3 +46,9 @@ Ready to run in production? Please [check our deployment guides](https://hexdocs
 ## Assets
 
 - npm install --prefix ./assets
+
+## Generare context
+
+- mix phx.gen.context Comments Comment comments content
+- mix ecto.migrate
+- mix ecto.gen.migration relation_posts_comments
