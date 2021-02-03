@@ -2,6 +2,7 @@ defmodule Blog.CommentsTest do
   use Blog.DataCase
 
   alias Blog.Comments
+  alias Blog.Posts.PostsTest
 
   describe "comments" do
     alias Blog.Comments.Comment
@@ -11,10 +12,20 @@ defmodule Blog.CommentsTest do
     @invalid_attrs %{content: nil}
 
     def comment_fixture(attrs \\ %{}) do
-      {:ok, comment} =
+      post = PostsTest.post_fixtures()
+
+      att =
         attrs
         |> Enum.into(@valid_attrs)
-        |> Comments.create_comment()
+
+      {:ok, comment} =
+        post.id
+        |> Comments.create_comment(att)
+
+      # {:ok, comment} =
+      #   attrs
+      #   |> Enum.into(@valid_attrs)
+      #   |> Comments.create_comment()
 
       comment
     end
@@ -30,12 +41,14 @@ defmodule Blog.CommentsTest do
     end
 
     test "create_comment/1 with valid data creates a comment" do
-      assert {:ok, %Comment{} = comment} = Comments.create_comment(@valid_attrs)
+      post = PostsTest.post_fixtures()
+      assert {:ok, %Comment{} = comment} = Comments.create_comment(post.id, @valid_attrs)
       assert comment.content == "some content"
     end
 
     test "create_comment/1 with invalid data returns error changeset" do
-      assert {:error, %Ecto.Changeset{}} = Comments.create_comment(@invalid_attrs)
+      post = PostsTest.post_fixtures()
+      assert {:error, %Ecto.Changeset{}} = Comments.create_comment(post.id, @invalid_attrs)
     end
 
     test "update_comment/2 with valid data updates the comment" do
