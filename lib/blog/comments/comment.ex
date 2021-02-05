@@ -4,6 +4,7 @@ defmodule Blog.Comments.Comment do
 
   alias Blog.Posts.Post
 
+  @derive {Jason.Encoder, only: [:content]}
   schema "comments" do
     field :content, :string
 
