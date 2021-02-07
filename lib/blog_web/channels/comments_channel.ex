@@ -1,4 +1,7 @@
 defmodule BlogWeb.CommentsChannel do
+  @moduledoc """
+  The channel comments
+  """
   use BlogWeb, :channel
 
   alias Blog.{Comments, Posts}
@@ -13,7 +16,7 @@ defmodule BlogWeb.CommentsChannel do
       socket.assigns.post_id
       |> Comments.create_comment(content)
 
-    IO.inspect(response)
+    # IO.inspect(response)
 
     case response do
       {:ok, comment} ->
