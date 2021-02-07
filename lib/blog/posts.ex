@@ -20,6 +20,20 @@ defmodule Blog.Posts do
   def get_post!(id), do: Repo.get!(Post, id)
 
   @doc """
+  Gets a single post with comments.
+
+  ## Examples
+
+      iex> get_post_with_comments!(123)
+      [%Post{}, ...]
+
+      iex> get_post!(999)
+      ** (Ecto.NoResultsError)
+
+  """
+  def get_post_with_comments!(id), do: Repo.get!(Post, id) |> Repo.preload(:comments)
+
+  @doc """
   Returns the list of posts.
 
   ## Examples
