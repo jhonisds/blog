@@ -61,33 +61,38 @@ const creatSocket = (post_id) => {
   channel.join()
     .receive("ok", resp => { get_comments(resp.comments) })
     .receive("error", resp => { console.log("Unable to join", resp) })
-
+  
+  channel.on(`comments:${post_id}:new`, addComment)
   
   document.getElementById("btn-comment").addEventListener("click", () => {
     const content = document.getElementById("comment").value
     
     channel.push("comment:add", { content: content })
     document.getElementById("comment").value = ""
-    
-  
   });
-  
-  
 }
 
 function get_comments(comments) {
-  const lis_comments = comments.map(comment => {
+  const list_comments = comments.map(comment => {
     console.log("Comments successfully", comment)
-    return `
-        <li class="collection-item avatar">
-          <i class="material-icons circle red">play_arrow</i>
-          <span class="title">Title</span>
-          <p> ${comment.content} </p>
-        </li>
-        `;
+    return template(comment)
   })
+  document.querySelector(".collection").innerHTML = list_comments.join('')
+}
 
-  document.querySelector(".collection").innerHTML = lis_comments.join('')
+function addComment(event) {
+  console.log(event)
+  document.querySelector(".collection").innerHTML += template(event.comment) 
+}
+
+function template(comment) {
+  return `
+    <li class="collection-item avatar">
+      <i class="material-icons circle red">play_arrow</i>
+      <span class="title">Title</span>
+      <p> ${comment.content} </p>
+    </li>
+    `;
 }
 
 window.creatSocket = creatSocket
